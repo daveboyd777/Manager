@@ -14,7 +14,7 @@
 
 """
 
-from __future__ import unicode_literals
+
 
 import os
 import sys
@@ -136,7 +136,7 @@ class TestProfile(unittest.TestCase):
 
         profile = Profile(file=STANDARD_PROFILE_CONTENT["file"])
         self.assertTrue(profile.initializeProfile())
-        for attribute, value in STANDARD_PROFILE_CONTENT.iteritems():
+        for attribute, value in STANDARD_PROFILE_CONTENT.items():
             self.assertIsInstance(getattr(profile, attribute), type(value))
             self.assertEqual(getattr(profile, attribute), value)
 
@@ -283,7 +283,7 @@ class TestManager(unittest.TestCase):
         manager = Manager()
         manager.register_component(SINGLE_COMPONENT[1])
         self.assertTrue(manager.instantiate_component(SINGLE_COMPONENT[0], managerCallback))
-        self.assertIsInstance(manager.components.values()[0].interface, SINGLE_COMPONENT[2])
+        self.assertIsInstance(list(manager.components.values())[0].interface, SINGLE_COMPONENT[2])
 
     def test_instantiate_components(self):
         """
@@ -293,12 +293,12 @@ class TestManager(unittest.TestCase):
         manager = Manager([os.path.join(COMPONENTS_DIRECTORY, item) for item in COMPONENTS])
         manager.register_components()
         manager.instantiate_components()
-        for component in manager.components.itervalues():
+        for component in manager.components.values():
             self.assertIsInstance(component.interface, Component)
         manager.unregister_components()
         manager.register_components()
         manager.instantiate_components(managerCallback)
-        for component in manager.components.itervalues():
+        for component in manager.components.values():
             self.assertTrue(component.callback)
 
     def test_reload_component(self):

@@ -14,7 +14,7 @@
 
 """
 
-from __future__ import unicode_literals
+
 
 from PyQt4.QtCore import QObject
 from PyQt4.QtCore import pyqtSignal
@@ -107,7 +107,7 @@ class QObjectComponent(QObject):
         """
 
         if value is not None:
-            assert type(value) is unicode, "'{0}' attribute: '{1}' type is not 'unicode'!".format("name", value)
+            assert type(value) is str, "'{0}' attribute: '{1}' type is not 'unicode'!".format("name", value)
         self.__name = value
 
     @name.deleter

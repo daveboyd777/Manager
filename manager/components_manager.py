@@ -14,7 +14,7 @@
 
 """
 
-from __future__ import unicode_literals
+
 
 import inspect
 import itertools
@@ -124,7 +124,7 @@ class Profile(object):
         """
 
         if value is not None:
-            assert type(value) is unicode, "'{0}' attribute: '{1}' type is not 'unicode'!".format(
+            assert type(value) is str, "'{0}' attribute: '{1}' type is not 'unicode'!".format(
                 "name", value)
         self.__name = value
 
@@ -160,7 +160,7 @@ class Profile(object):
         """
 
         if value is not None:
-            assert type(value) is unicode, "'{0}' attribute: '{1}' type is not 'unicode'!".format("file", value)
+            assert type(value) is str, "'{0}' attribute: '{1}' type is not 'unicode'!".format("file", value)
         self.__file = value
 
     @file.deleter
@@ -195,7 +195,7 @@ class Profile(object):
         """
 
         if value is not None:
-            assert type(value) is unicode, "'{0}' attribute: '{1}' type is not 'unicode'!".format(
+            assert type(value) is str, "'{0}' attribute: '{1}' type is not 'unicode'!".format(
                 "directory", value)
             assert os.path.exists(value), "'{0}' attribute: '{1}' directory doesn't exists!".format("directory", value)
         self.__directory = value
@@ -232,7 +232,7 @@ class Profile(object):
         """
 
         if value is not None:
-            assert type(value) is unicode, "'{0}' attribute: '{1}' type is not 'unicode'!".format(
+            assert type(value) is str, "'{0}' attribute: '{1}' type is not 'unicode'!".format(
                 "attribute", value)
         self.__attribute = value
 
@@ -371,7 +371,7 @@ class Profile(object):
         """
 
         if value is not None:
-            assert type(value) is unicode, "'{0}' attribute: '{1}' type is not 'unicode'!".format(
+            assert type(value) is str, "'{0}' attribute: '{1}' type is not 'unicode'!".format(
                 "category", value)
         self.__category = value
 
@@ -407,7 +407,7 @@ class Profile(object):
         """
 
         if value is not None:
-            assert type(value) is unicode, "'{0}' attribute: '{1}' type is not 'unicode'!".format(
+            assert type(value) is str, "'{0}' attribute: '{1}' type is not 'unicode'!".format(
                 "title", value)
         self.__title = value
 
@@ -443,7 +443,7 @@ class Profile(object):
         """
 
         if value is not None:
-            assert type(value) is unicode, "'{0}' attribute: '{1}' type is not 'unicode'!".format(
+            assert type(value) is str, "'{0}' attribute: '{1}' type is not 'unicode'!".format(
                 "package", value)
         self.__package = value
 
@@ -479,7 +479,7 @@ class Profile(object):
         """
 
         if value is not None:
-            assert type(value) is unicode, "'{0}' attribute: '{1}' type is not 'unicode'!".format(
+            assert type(value) is str, "'{0}' attribute: '{1}' type is not 'unicode'!".format(
                 "version", value)
         self.__version = value
 
@@ -515,7 +515,7 @@ class Profile(object):
         """
 
         if value is not None:
-            assert type(value) is unicode, "'{0}' attribute: '{1}' type is not 'unicode'!".format(
+            assert type(value) is str, "'{0}' attribute: '{1}' type is not 'unicode'!".format(
                 "author", value)
         self.__author = value
 
@@ -551,7 +551,7 @@ class Profile(object):
         """
 
         if value is not None:
-            assert type(value) is unicode, "'{0}' attribute: '{1}' type is not 'unicode'!".format(
+            assert type(value) is str, "'{0}' attribute: '{1}' type is not 'unicode'!".format(
                 "email", value)
         self.__email = value
 
@@ -587,7 +587,7 @@ class Profile(object):
         """
 
         if value is not None:
-            assert type(value) is unicode, "'{0}' attribute: '{1}' type is not 'unicode'!".format(
+            assert type(value) is str, "'{0}' attribute: '{1}' type is not 'unicode'!".format(
                 "url", value)
         self.__url = value
 
@@ -623,7 +623,7 @@ class Profile(object):
         """
 
         if value is not None:
-            assert type(value) is unicode, "'{0}' attribute: '{1}' type is not 'unicode'!".format(
+            assert type(value) is str, "'{0}' attribute: '{1}' type is not 'unicode'!".format(
                 "description", value)
         self.__description = value
 
@@ -768,7 +768,7 @@ class Manager(object):
             assert type(value) in (tuple, list), "'{0}' attribute: '{1}' type is not 'tuple' or 'list'!".format(
                 "paths", value)
             for path in value:
-                assert type(path) is unicode, "'{0}' attribute: '{1}' type is not 'unicode'!".format(
+                assert type(path) is str, "'{0}' attribute: '{1}' type is not 'unicode'!".format(
                     "paths", path)
                 assert os.path.exists(path), "'{0}' attribute: '{1}' directory doesn't exists!".format("paths", path)
         self.__paths = value
@@ -805,7 +805,7 @@ class Manager(object):
         """
 
         if value is not None:
-            assert type(value) is unicode, "'{0}' attribute: '{1}' type is not 'unicode'!".format(
+            assert type(value) is str, "'{0}' attribute: '{1}' type is not 'unicode'!".format(
                 "extension", value)
         self.__extension = value
 
@@ -843,7 +843,7 @@ class Manager(object):
         if value is not None:
             assert type(value) is dict, "'{0}' attribute: '{1}' type is not 'dict'!".format("categories", value)
             for key in value:
-                assert type(key) is unicode, "'{0}' attribute: '{1}' type is not 'unicode'!".format(
+                assert type(key) is str, "'{0}' attribute: '{1}' type is not 'unicode'!".format(
                     "categories", key)
         self.__categories = value
 
@@ -930,7 +930,7 @@ class Manager(object):
         :rtype: object
         """
 
-        return self.__components.iteritems()
+        return iter(self.__components.items())
 
     def __contains__(self, component):
         """
@@ -952,7 +952,7 @@ class Manager(object):
         :rtype: bool
         """
 
-        return component in self.__components.keys()
+        return component in list(self.__components.keys())
 
     def __len__(self):
         """
@@ -970,7 +970,7 @@ class Manager(object):
         :rtype: int
         """
 
-        return len(self.__components.keys())
+        return len(list(self.__components.keys()))
 
     @foundations.exceptions.handle_exceptions(manager.exceptions.ComponentModuleError,
                                               manager.exceptions.ComponentProfileError)
@@ -1131,7 +1131,7 @@ class Manager(object):
         object = profile.attribute in profile.module.__dict__ and getattr(profile.module, profile.attribute) or None
         if object and inspect.isclass(object):
             instance = object(name=profile.name)
-            for category, type in self.__categories.iteritems():
+            for category, type in self.__categories.items():
                 if type.__name__ in (base.__name__ for base in object.__bases__):
                     profile.category = category
                     profile.interface = instance
@@ -1205,7 +1205,7 @@ class Manager(object):
             reload(module)
             object = profile.attribute in dir(module) and getattr(module, profile.attribute) or None
             if object and inspect.isclass(object):
-                for type in self.__categories.itervalues():
+                for type in self.__categories.values():
                     if type.__name__ in (base.__name__ for base in object.__bases__):
                         instance = object(name=profile.name)
                         profile.module = module

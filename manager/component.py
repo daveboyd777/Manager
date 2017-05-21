@@ -14,7 +14,7 @@
 
 """
 
-from __future__ import unicode_literals
+
 
 import foundations.exceptions
 import foundations.verbose
@@ -76,7 +76,7 @@ class Component(object):
         """
 
         if value is not None:
-            assert type(value) is unicode, "'{0}' attribute: '{1}' type is not 'unicode'!".format("name", value)
+            assert type(value) is str, "'{0}' attribute: '{1}' type is not 'unicode'!".format("name", value)
         self.__name = value
 
     @name.deleter
